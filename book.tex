@@ -10,6 +10,9 @@
 \input{tex/packages}
 \input{tex/layout}
 
+\usepackage[backend=biber]{biblatex}
+\addbibresource{resources.bib}
+
 \begin{document}
 \include{tex/titlepages}
 \frontmatter
@@ -17,5 +20,6 @@
 \tableofcontents
 \include{chapters/00-introduction}
 \mainmatter
-\include{chapters/01-dhcp}
+\include{chapters/02-dhcp}
+\printbibliography
 \end{document}

@@ -1,0 +1,65 @@
+\chapter{Dynamic Host Configuration Protocol}
+\label{chap:dhcp}
+
+The Dynamic Host Configuration Protocol (\abbr{DHCP}) is a network management protocol used to dynamically assign IP addresses to network clients.
+In addition to an \abbr{IP} address, other configuration parameters can also be provided to these clients.
+The technology eliminates the need for individually configuring network devices manually, and consists of two network components, a centrally installed network \abbr{DHCP} server and client instances of the protocol stack on each computer or device.
+
+
+
+\section{Why use \abbr{DHCP}?}
+
+The \emph{why} of \abbr{DHCP} should be fairly obvious if you have a laptop, tablet, or cell phone which you connect to the Wi-Fi network and take with you when you go to a coffee shop, a friend's house, or to work.
+\abbr{DHCP} enables you to easily connect to each network without having to worry about its \abbr{IP} configuration.
+We all know the inconvenience of having to ask someone for the Wi-Fi password to access the guest network.
+Now imagine also having to ask someone for an available \abbr{IP} address, the correct subnet mask, the \abbr{IP} address of the default gateway and the \abbr{DNS} servers, and you can understand the beauty of \abbr{DHCP}.
+
+For a short history lesson, below is a quote from \cite[3-5]{droms02}.
+
+\begin{quotation}
+\noindent
+One of the authors of this book, Ted Lemon, worked as a network administrator at the Digital Equipment Corporation (DEC) campus in Palo Alto, California, before \abbr{DHCP} was available to simplify the tasks of address management and configuration.
+The DEC campus used a central \abbr{IP} address administration system, which was based on a single list, or \emph{host table}, of computers, \abbr{IP} addresses, and \emph{Domain Name System} (\abbr{DNS}) names for the entire network.
+
+To help introduce you to the tasks that a \abbr{DHCP} server performs, this section describes, from Ted’s perspective, what network administrators did before \abbr{DHCP} became widely available.
+
+As part of the network administration task, we network administrators updated the host table with new computers as they were added to the network and changed the entries for computers as their names and addresses changed.
+Periodically, we ran a shell script on the host table to update the \abbr{DNS} server database.
+We configured individual computers manually, from the entries in the host table, by physically walking up to each computer and entering the configuration information.
+
+Users had a variety of questions about connecting their computers to the campus network.
+Usually, they wanted to know what \abbr{IP} address they could use for their computers.
+To respond to such questions, we asked the following:
+\begin{itemize}
+\item Who are you?
+\item Is this a new device, or was it connected to the network before?
+\item What is the device's old \abbr{IP} address?
+\item Where do you need to istall this device?
+\item In what department do you work?
+\end{itemize}
+
+After we obtained this information, we decided whether to give the user an \abbr{IP} address.
+It was usually easy to make this decision; if the user was an employee or a contractor working in a DEC Palo Alto building, we gave the user an address.
+Next, we decided what \abbr{IP} address to assign to the user.
+To do this, we had to know what network segments were present at the site, which segment or segments were available in the user's office, and how those network segments were configured.
+
+If we supported a single network segment with a single \abbr{IP} subnet, answering these questions would have been simple, and everyone would have been allocated addresses from that subnet.
+However, the DEC Palo Alto campus network consisted of many network segments, routed together through a backbone network.
+Thus, it was a bit more difficult to assign \abbr{IP} addresses.
+In essence, each network administrator had to remember which network segments were available in which buildings, on which floors, and, in some cases, in which offices.
+If we remembered incorrectly, the address might have been allocated from the wrong subnet or the address might have already been assigned to another device, and we would have to perform the process again.
+
+After we determined the network segment to which the user's computer would be attached, we determined whether any \abbr{IP} addresses were available on it and chose one for the user.
+If no \abbr{IP} addresses were available on the segment -- and this was often the case -- we examined the host table for addresses that appeared to be no longer in use.
+Occasionally, we configured a new network segment and moved some devices to it to expand the pool of available addresses.
+
+In addition to choosing an \abbr{IP} address on the correct subnet, we also provided the user with additional information about the network, which usually consisted of the following:
+\begin{itemize}
+\item The addresses of the default routers for the network segment to which the device was to be connected
+\item The addresses of primary and secondary domain name servers that the device would use
+\item The subnet mask and broadcast address
+\end{itemize}
+If the device needed specific network services that were not used by all devices on the network, we also informed the user how to access those services and programmed that information into the device.
+For example, we manually configured a diskless network file system (\abbr{NFS}) client's \abbr{NFS} mount information, and we usually gave different information to each diskless \abbr{NFS} client.
+
+\end{quotation}
