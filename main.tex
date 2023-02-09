@@ -1,51 +1,92 @@
-\title{DNS, DHCP \textsc{\&} IP address management}
-\author{Tom Marcoen}
-\date{\today}
+\usepackage{xparse}
 
-\usepackage{libertine}
-\usepackage[dutch]{babel}
+% Fonts
+\usepackage[T1]{fontenc}
+%\usepackage{libertinehologopatch}
+\usepackage[supstfm=libertinesups]{superiors}
+\usepackage[mono=false,oldstyle]{libertine}
+\usepackage{libertinust1math}
+\usepackage{microtype}
+\microtypesetup{tracking=smallcaps,letterspace=50}
+\usepackage{textcomp}
+%\usepackage[varqu,varl]{inconsolata}
+\usepackage[scaled=1.05]{zlmtt}
+
+
+\usepackage{listings}
+\lstset{
+    basicstyle       = \ttfamily\small,
+    numbers          = left,
+    numberstyle      = \tiny,
+    xleftmargin      = 1em,
+    numbersep        = .75em,
+    columns          = fullflexible,
+    breaklines       = true,
+    keepspaces       = true,
+    breakindent      = 1em,
+    frame            = tb,
+    framerule        = .8pt,
+    rulecolor        = \color{listingrulecolor}
+}
+\usepackage{siunitx}
+\usepackage{bm}
+\usepackage{upgreek}
+\usepackage{amsmath}
+
+
+% TikZ
+\usepackage{tikz}
+\usepackage{pgf-pie}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc}
+
+\input{tex/theme-syntra-bizz}
+\input{tex/headings}
+
+\usepackage[abbreviations,automake,stylemods=mcols,shortcuts=ac,nonumberlist,indexcrossrefs=true]{glossaries-extra}
+\newcommand{\abbr}[1]{\textsc{\MakeLowercase{#1}}}
+\setlength{\columnsep}{3em}
+\setabbreviationstyle{long-short-sc}
+\renewcommand*{\glsabbrvscfont}[1]{\abbr{#1}}
+\makeglossaries
+\loadglsentries{tex/abbreviations}
+%\loadglsentries{tex/glossary}
+\glsdisablehyper
+
+% Links
+\usepackage{varioref}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\urlstyle{rm}
+\hypersetup{colorlinks=true,allcolors=linkcolor,linktocpage}
+\creflabelformat{equation}{#2\textup{#1}#3} % remove the brackets from an equation reference, i.e. "eq. 2.1" instead of "eq. (2.1)"
+
+
+\title{\acs{DNS}, \acs{DHCP} and \acs{IPAM}}
+\author{Tom Marcoen}
+\date{2023}
 
 \begin{document}
 
-\mode<article>{\maketitle}
-\begin{frame}
-    \titlepage
-\end{frame}
+\mode<article>{
+   \frontmatter
+   \input{tex/titlepages}
+   \clearforchapter
+   \tableofcontents*
+   \include{chapters/preface}
+   \printglossary[type=abbreviations,style=mcolindex]
+   \mainmatter
+}
+\titleslide{\acs{DNS}, \acs{DHCP} and \acs{IPAM}}
 
+\include{chapters/dns}
+\include{chapters/dhcp}
+\include{chapters/ipam}
 
-\section*{Inleiding}
-
-\begin{frame}
-    \tableofcontents
-\end{frame}
-
-
-\section{DHCP}
-\subsection{Wat is DHCP?}
-\subsection{Waarom DHCP?}
-\subsection{Nadelen van DHCP}
-\subsection{DORA}
-\subsection{DHCP relay}
-\subsection{DHCP options}
-
-
-\section{DNS}
-\subsection{Wat is DNS?}
-\subsection{Waarom DNS?}
-\subsection{Recursive lookups}
-\subsection{Iterative lookups}
-\subsection{Authoritative name servers}
-
-
-\section{IP address management}
-\subsection{Waarom adresbeheer doen?}
-\subsection{Excelsheets}
-\subsection{phpIPAM}
-\subsection{Netbox}
-
-
-\begin{frame}
-    
-\end{frame}
+\mode<article>{
+\appendix
+\include{chapters/virtualbox}
+\include{chapters/unix}
+}
 
 \end{document}

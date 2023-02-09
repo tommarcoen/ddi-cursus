@@ -1,15 +1,24 @@
-\chapter{Dynamic Host Configuration Protocol}
+\Chapter{\acf{DHCP}}
 \label{chap:dhcp}
 
+\mode<article>{
 The Dynamic Host Configuration Protocol (\abbr{DHCP}) is a network management protocol used to dynamically assign IP addresses to network clients.
 In addition to an \abbr{IP} address, other configuration parameters can also be provided to these clients.
 The technology eliminates the need for individually configuring network devices manually, and consists of two network components, a centrally installed network \abbr{DHCP} server and client instances of the protocol stack on each computer or device.
+}
+
+\Section{Wat is DHCP?}
+\Section{Waarom DHCP?}
+\Section{Nadelen van DHCP}
+\Section{DORA}
+\Section{DHCP relay}
+\Section{DHCP options}
 
 
 
-\section{Why use \abbr{DHCP}?}
-
-The \emph{why} of \abbr{DHCP} should be fairly obvious if you have a laptop, tablet, or cell phone which you connect to the Wi-Fi network and take with you when you go to a coffee shop, a friend's house, or to work.
+\Section{Why use \acs{DHCP}?}
+\mode<article>{
+The \emph{why} of \acs{DHCP} should be fairly obvious if you have a laptop, tablet, or cell phone which you connect to the Wi-Fi network and take with you when you go to a coffee shop, a friend's house, or to work.
 \abbr{DHCP} enables you to easily connect to each network without having to worry about its \abbr{IP} configuration.
 We all know the inconvenience of having to ask someone for the Wi-Fi password to access the guest network.
 Now imagine also having to ask someone for an available \abbr{IP} address, the correct subnet mask, the \abbr{IP} address of the default gateway and the \abbr{DNS} servers, and you can understand the beauty of \abbr{DHCP}.
@@ -63,3 +72,4 @@ If the device needed specific network services that were not used by all devices
 For example, we manually configured a diskless network file system (\abbr{NFS}) client's \abbr{NFS} mount information, and we usually gave different information to each diskless \abbr{NFS} client.
 
 \end{quotation}
+}

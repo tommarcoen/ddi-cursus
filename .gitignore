@@ -3,12 +3,16 @@
 *.bbl
 *.bcf
 *.blg
+*.gl*
 *.idx
 *.ilg
 *.ind
+*.ist
+*.key
 *.lof
 *.log
 *.lot
+*.nav
 *.out
 *.pdf
 *.run.xml
